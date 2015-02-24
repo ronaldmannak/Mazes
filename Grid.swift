@@ -43,8 +43,11 @@ enum Accessor {
 }
 
 protocol Linkable {
+
     typealias T
     init(coordinate: Coordinate)
+    var coordinate: Coordinate {get}
+    var neighbors: [Accessor: T] {get}
     func link(cell: T, bidirectional: Bool)
     func unlink(accessor: Accessor, bidirectional: Bool)
     func unlink(cell: T, bidirectional: Bool)
@@ -93,7 +96,13 @@ extension Grid {
 //    func configureCells() {
 //        for r in 0 ..< rows {
 //            for c in 0 ..< columns {
-//                if let cell
+//                if let cell = self[c, r] {
+//                    if cell.coordinate.row != 0 {
+//                        if let neighbor = self[c, r - 1] {
+//                            cell.link(neighbor, bidirectional: false)
+//                        }
+//                    }
+//                }
 //            }
 //        }
 //    }

@@ -47,12 +47,16 @@ extension Cell: Linkable {
             unlink(direction, bidirectional: bidirectional)
         }
         neighbors[direction] = cell
+        
+        if bidirectional == true {
+            cell.link(self, bidirectional: false)
+        }
     }
     
     func unlink(accessor: Accessor, bidirectional: Bool = true) {
 
         if let cell = self.neighbors[accessor] {
-            if bidirectional == true { cell.unlink(self) }
+            if bidirectional == true { cell.unlink(self, bidirectional: false) }
             self.neighbors.removeValueForKey(accessor)
         }
     }
@@ -62,7 +66,7 @@ extension Cell: Linkable {
         for key in neighbors.keys {
             if let linkedCell = neighbors[key] where linkedCell == cell {
                 if bidirectional == true {
-                    linkedCell.unlink(self)
+                    linkedCell.unlink(self, bidirectional: false)
                 }
                 neighbors.removeValueForKey(key)
             }
