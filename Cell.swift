@@ -19,7 +19,7 @@ class Cell {
     }
 }
 
-extension Cell: Linkable {
+extension Cell {
 
     typealias T = Cell
     

@@ -42,37 +42,28 @@ enum Accessor {
     }
 }
 
-protocol Linkable {
-
-    typealias T
-    init(coordinate: Coordinate)
-    var coordinate: Coordinate {get}
-    var neighbors: [Accessor: T] {get}
-    func link(cell: T, bidirectional: Bool)
-    func unlink(accessor: Accessor, bidirectional: Bool)
-    func unlink(cell: T, bidirectional: Bool)
-}
-
-class Grid<T where T: Printable, T:Equatable, T:Hashable, T:Linkable> {
+class Grid {
     
     let columns: Column
     let rows: Row
+    let cellType: Cell.Type
     
-    private var array: [T?]
+    private var array: [Cell?]
 //    private static let zobristKeys: [[Int]]
     
-    convenience init(columns: Column, rows: Row) {
-        self.init(columns: columns, rows: rows, repeatedValue: nil)
+    convenience init(columns: Column, rows: Row, cellType: Cell.Type) {
+        self.init(columns: columns, rows: rows, cellType: cellType, repeatedValue: nil)
     }
     
-    init(columns: Column, rows: Row, repeatedValue: T?) {
+    init(columns: Column, rows: Row, cellType:Cell.Type, repeatedValue: Cell?) {
         self.columns = columns
         self.rows = rows
+        self.cellType = cellType
         
-        array = Array<T?>(count: columns * rows, repeatedValue: repeatedValue)
+        array = Array<Cell?>(count: columns * rows, repeatedValue: repeatedValue)
     }
     
-    subscript(column: Column, row: Row) -> T? {
+    subscript(column: Column, row: Row) -> Cell? {
         get {
             return array[row * columns + column]
         }
@@ -85,10 +76,10 @@ class Grid<T where T: Printable, T:Equatable, T:Hashable, T:Linkable> {
 // MARK: Setup
 extension Grid {
     
-    func prepare(cell: T.Type) {
+    func prepare() {
         for r in 0 ..< rows {
             for c in 0 ..< columns {
-                self[c, r] = cell(coordinate: Coordinate(column: c, row: r))
+                self[c, r] = cellType(coordinate: Coordinate(column: c, row: r))
             }
         }
     }
@@ -138,7 +129,7 @@ extension Grid: Printable {
 
 extension Grid: Equatable {}
 
-func == <T where T:Equatable, T:Printable> (left: Grid<T>, right: Grid<T>) -> Bool {
+func == (left: Grid, right: Grid) -> Bool {
 
     if left.rows != right.rows || left.columns != right.columns {
         return false
