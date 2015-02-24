@@ -12,6 +12,9 @@
 		521205A51A9C1FD800E346EE /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 521205A41A9C1FD800E346EE /* Images.xcassets */; };
 		521205A81A9C1FD800E346EE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 521205A61A9C1FD800E346EE /* Main.storyboard */; };
 		521205B41A9C1FD800E346EE /* MazesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521205B31A9C1FD800E346EE /* MazesTests.swift */; };
+		521205BE1A9C201A00E346EE /* Grid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521205BD1A9C201A00E346EE /* Grid.swift */; };
+		521205C31A9C32D300E346EE /* Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521205C21A9C32D300E346EE /* Cell.swift */; };
+		521205C51A9C494800E346EE /* Coordinate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521205C41A9C494800E346EE /* Coordinate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -28,12 +31,15 @@
 		5212059B1A9C1FD800E346EE /* Mazes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Mazes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5212059F1A9C1FD800E346EE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		521205A01A9C1FD800E346EE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		521205A21A9C1FD800E346EE /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		521205A21A9C1FD800E346EE /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ViewController.swift; path = Mazes/ViewController.swift; sourceTree = "<group>"; };
 		521205A41A9C1FD800E346EE /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		521205A71A9C1FD800E346EE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		521205AD1A9C1FD800E346EE /* MazesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MazesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		521205B21A9C1FD800E346EE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		521205B31A9C1FD800E346EE /* MazesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MazesTests.swift; sourceTree = "<group>"; };
+		521205BD1A9C201A00E346EE /* Grid.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Grid.swift; sourceTree = "<group>"; };
+		521205C21A9C32D300E346EE /* Cell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cell.swift; sourceTree = "<group>"; };
+		521205C41A9C494800E346EE /* Coordinate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Coordinate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,7 +63,10 @@
 		521205921A9C1FD800E346EE = {
 			isa = PBXGroup;
 			children = (
-				5212059D1A9C1FD800E346EE /* Mazes */,
+				521205C01A9C202400E346EE /* ViewControllers */,
+				521205C11A9C202800E346EE /* Views */,
+				521205BF1A9C201C00E346EE /* Models */,
+				5212059D1A9C1FD800E346EE /* Supporting Files */,
 				521205B01A9C1FD800E346EE /* MazesTests */,
 				5212059C1A9C1FD800E346EE /* Products */,
 			);
@@ -72,15 +81,14 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		5212059D1A9C1FD800E346EE /* Mazes */ = {
+		5212059D1A9C1FD800E346EE /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
 				521205A01A9C1FD800E346EE /* AppDelegate.swift */,
-				521205A21A9C1FD800E346EE /* ViewController.swift */,
 				521205A41A9C1FD800E346EE /* Images.xcassets */,
-				521205A61A9C1FD800E346EE /* Main.storyboard */,
 				5212059E1A9C1FD800E346EE /* Supporting Files */,
 			);
+			name = "Supporting Files";
 			path = Mazes;
 			sourceTree = "<group>";
 		};
@@ -107,6 +115,32 @@
 				521205B21A9C1FD800E346EE /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		521205BF1A9C201C00E346EE /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				521205BD1A9C201A00E346EE /* Grid.swift */,
+				521205C21A9C32D300E346EE /* Cell.swift */,
+				521205C41A9C494800E346EE /* Coordinate.swift */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		521205C01A9C202400E346EE /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				521205A21A9C1FD800E346EE /* ViewController.swift */,
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		521205C11A9C202800E346EE /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				521205A61A9C1FD800E346EE /* Main.storyboard */,
+			);
+			name = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -209,7 +243,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				521205A31A9C1FD800E346EE /* ViewController.swift in Sources */,
+				521205C51A9C494800E346EE /* Coordinate.swift in Sources */,
+				521205C31A9C32D300E346EE /* Cell.swift in Sources */,
 				521205A11A9C1FD800E346EE /* AppDelegate.swift in Sources */,
+				521205BE1A9C201A00E346EE /* Grid.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -238,6 +275,7 @@
 				521205A71A9C1FD800E346EE /* Base */,
 			);
 			name = Main.storyboard;
+			path = Mazes;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
